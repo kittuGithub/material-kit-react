@@ -2,16 +2,19 @@ import { Helmet } from 'react-helmet';
 import {
   Box,
   Container,
-  Grid
+  Divider,
+  Grid,
+  Typography
 } from '@material-ui/core';
-import Budget from 'src/components/dashboard//Budget';
-import LatestOrders from 'src/components/dashboard//LatestOrders';
-import LatestProducts from 'src/components/dashboard//LatestProducts';
-import Sales from 'src/components/dashboard//Sales';
-import TasksProgress from 'src/components/dashboard//TasksProgress';
-import TotalCustomers from 'src/components/dashboard//TotalCustomers';
-import TotalProfit from 'src/components/dashboard//TotalProfit';
-import TrafficByDevice from 'src/components/dashboard//TrafficByDevice';
+import BatchSelection from 'src/components/dashboard/BatchSelection';
+// import Budget from 'src/components/dashboard//Budget';
+// import LatestOrders from 'src/components/dashboard//LatestOrders';
+// import LatestProducts from 'src/components/dashboard//LatestProducts';
+// import Sales from 'src/components/dashboard//Sales';
+// import TasksProgress from 'src/components/dashboard//TasksProgress';
+// import TotalCustomers from 'src/components/dashboard//TotalCustomers';
+// import TotalProfit from 'src/components/dashboard//TotalProfit';
+// import TrafficByDevice from 'src/components/dashboard//TrafficByDevice';
 
 const Dashboard = () => (
   <>
@@ -26,7 +29,56 @@ const Dashboard = () => (
       }}
     >
       <Container maxWidth={false}>
+        <Typography
+          color="textPrimary"
+          gutterBottom
+          variant="h4"
+        >
+          Batch Selection:
+        </Typography>
         <Grid
+          container
+          spacing={3}
+        >
+          <Grid
+            item
+            lg={12}
+            sm={6}
+            xl={3}
+            xs={12}
+          >
+            <BatchSelection />
+          </Grid>
+
+        </Grid>
+        <Divider />
+
+        <Typography
+          color="textPrimary"
+          gutterBottom
+          variant="h4"
+          marginTop="10px"
+        >
+          Batch Summary:
+        </Typography>
+        <Grid
+          container
+          spacing={3}
+        >
+          <Grid
+            item
+            lg={12}
+            sm={6}
+            xl={3}
+            xs={12}
+          >
+            Batch Summary stuff
+
+          </Grid>
+
+        </Grid>
+
+        {/* <Grid
           container
           spacing={3}
         >
@@ -102,7 +154,7 @@ const Dashboard = () => (
           >
             <LatestOrders />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Container>
     </Box>
   </>
