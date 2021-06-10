@@ -7,6 +7,8 @@ import {
   Typography
 } from '@material-ui/core';
 import BatchSelection from 'src/components/dashboard/BatchSelection';
+import BatchSummary from 'src/components/dashboard/BatchSummary';
+import JobDetails from 'src/components/dashboard/JobDetails';
 // import Budget from 'src/components/dashboard//Budget';
 // import LatestOrders from 'src/components/dashboard//LatestOrders';
 // import LatestProducts from 'src/components/dashboard//LatestProducts';
@@ -43,8 +45,8 @@ const Dashboard = () => (
           <Grid
             item
             lg={12}
-            sm={6}
-            xl={3}
+            sm={12}
+            xl={12}
             xs={12}
           >
             <BatchSelection />
@@ -57,7 +59,7 @@ const Dashboard = () => (
           color="textPrimary"
           gutterBottom
           variant="h4"
-          marginTop="10px"
+          style={{ marginTop: '10px' }}
         >
           Batch Summary:
         </Typography>
@@ -69,10 +71,35 @@ const Dashboard = () => (
             item
             lg={12}
             sm={6}
-            xl={3}
+            xl={12}
             xs={12}
           >
-            Batch Summary stuff
+            <BatchSummary />
+
+          </Grid>
+
+        </Grid>
+
+        <Typography
+          color="textPrimary"
+          gutterBottom
+          variant="h4"
+          style={{ marginTop: '10px' }}
+        >
+          Job Details:
+        </Typography>
+        <Grid
+          container
+          spacing={3}
+        >
+          <Grid
+            item
+            lg={12}
+            sm={6}
+            xl={12}
+            xs={12}
+          >
+            <JobDetails />
 
           </Grid>
 
