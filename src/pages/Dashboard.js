@@ -16,7 +16,7 @@ import JobDetails from 'src/components/dashboard/JobDetails';
 // import TasksProgress from 'src/components/dashboard//TasksProgress';
 // import TotalCustomers from 'src/components/dashboard//TotalCustomers';
 // import TotalProfit from 'src/components/dashboard//TotalProfit';
-// import TrafficByDevice from 'src/components/dashboard//TrafficByDevice';
+import TrafficByDevice from 'src/components/dashboard//TrafficByDevice';
 
 const Dashboard = () => (
   <>
@@ -103,6 +103,20 @@ const Dashboard = () => (
 
           </Grid>
 
+        </Grid>
+        <Grid
+          container
+          spacing={3}
+        >
+          <Grid
+            item
+            lg={4}
+            md={6}
+            xl={3}
+            xs={12}
+          >
+            <TrafficByDevice sx={{ height: '100%' }} />
+          </Grid>
         </Grid>
 
         {/* <Grid

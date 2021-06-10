@@ -4,23 +4,24 @@ import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
-  Button,
+  // Button,
   Divider,
   Drawer,
   Hidden,
   List,
   Typography
 } from '@material-ui/core';
-import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon
-} from 'react-feather';
+// import {
+//   AlertCircle as AlertCircleIcon,
+//   BarChart as BarChartIcon,
+//   Lock as LockIcon,
+//   Settings as SettingsIcon,
+//   ShoppingBag as ShoppingBagIcon,
+//   User as UserIcon,
+//   UserPlus as UserPlusIcon,
+//   Users as UsersIcon
+// } from 'react-feather';
+import { BarChart as BarChartIcon } from 'react-feather';
 import NavItem from './NavItem';
 
 const user = {
@@ -33,42 +34,42 @@ const items = [
     href: '/app/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
-  },
-  {
-    href: '/app/customers',
-    icon: UsersIcon,
-    title: 'Customers'
-  },
-  {
-    href: '/app/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
-  },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
-  {
-    href: '/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
   }
+  // {
+  //   href: '/app/customers',
+  //   icon: UsersIcon,
+  //   title: 'Customers'
+  // },
+  // {
+  //   href: '/app/products',
+  //   icon: ShoppingBagIcon,
+  //   title: 'Products'
+  // },
+  // {
+  //   href: '/app/account',
+  //   icon: UserIcon,
+  //   title: 'Account'
+  // },
+  // {
+  //   href: '/app/settings',
+  //   icon: SettingsIcon,
+  //   title: 'Settings'
+  // },
+  // {
+  //   href: '/login',
+  //   icon: LockIcon,
+  //   title: 'Login'
+  // },
+  // {
+  //   href: '/register',
+  //   icon: UserPlusIcon,
+  //   title: 'Register'
+  // },
+  // {
+  //   href: '/404',
+  //   icon: AlertCircleIcon,
+  //   title: 'Error'
+  // }
 ];
 
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
@@ -133,7 +134,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
       <Box sx={{ flexGrow: 1 }} />
-      <Box
+      {/* <Box
         sx={{
           backgroundColor: 'background.default',
           m: 2,
@@ -169,7 +170,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
             See PRO version
           </Button>
         </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 
