@@ -8,8 +8,9 @@ import {
   Grid,
   Button
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
-export default function BatchSelection(props) {
+function BatchSelection(props) {
   const [usecase, setUsecase] = React.useState('');
   const handleUsecase = (event) => {
     setUsecase(event.target.value);
@@ -29,6 +30,11 @@ export default function BatchSelection(props) {
   const handleUserid = (event) => {
     setUserid(event.target.value);
   };
+
+  const onSummaryClick = () => {
+    props.handlebatchsummary();
+  };
+
   return (
     <Card
       sx={{ height: '100%' }}
@@ -95,7 +101,7 @@ export default function BatchSelection(props) {
             </Select>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={onSummaryClick}>
               Summary
             </Button>
           </Grid>
@@ -104,3 +110,9 @@ export default function BatchSelection(props) {
     </Card>
   );
 }
+
+BatchSelection.propTypes = {
+  handlebatchsummary: PropTypes.func
+};
+
+export default BatchSelection;

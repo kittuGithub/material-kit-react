@@ -8,6 +8,7 @@ import {
   Button
 } from '@material-ui/core';
 import { v4 as uuid } from 'uuid';
+import PropTypes from 'prop-types';
 
 const jobs = [
   {
@@ -42,32 +43,43 @@ const jobs = [
   }
 ];
 
-const BatchSummary = (props) => (
-  <Card {...props}>
-    <List>
-      {jobs.map((job) => (
-        <ListItem key={job.id} alignItems="flex-start">
-          <ListItemText
-            primary={job.category}
-          />
-          <ListItemText
-            primary={job.category}
-          />
-          <LinearProgress
-            value={75.5}
-            variant="determinate"
-          />
-          <Button
-            color="primary"
-            size="small"
-            variant="contained"
-          >
-            Details
-          </Button>
-        </ListItem>
-      ))}
-    </List>
-  </Card>
-);
+const BatchSummary = (props) => {
+  const onDetailClick = () => {
+    props.handlejobdetails();
+  };
+
+  return (
+    <Card {...props}>
+      <List>
+        {jobs.map((job) => (
+          <ListItem key={job.id} alignItems="flex-start">
+            <ListItemText
+              primary={job.category}
+            />
+            <ListItemText
+              primary={job.category}
+            />
+            <LinearProgress
+              value={75.5}
+              variant="determinate"
+            />
+            <Button
+              color="primary"
+              size="small"
+              variant="contained"
+              onClick={onDetailClick}
+            >
+              Details
+            </Button>
+          </ListItem>
+        ))}
+      </List>
+    </Card>
+  );
+};
+
+BatchSummary.propTypes = {
+  handlejobdetails: PropTypes.func
+};
 
 export default BatchSummary;
