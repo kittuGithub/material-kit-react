@@ -9,9 +9,9 @@ import {
   colors,
   useTheme
 } from '@material-ui/core';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import PhoneIcon from '@material-ui/icons/Phone';
-import TabletIcon from '@material-ui/icons/Tablet';
+// import LaptopMacIcon from '@material-ui/icons/LaptopMac';
+// import PhoneIcon from '@material-ui/icons/Phone';
+// import TabletIcon from '@material-ui/icons/Tablet';
 
 const TrafficByDevice = (props) => {
   const theme = useTheme();
@@ -19,18 +19,21 @@ const TrafficByDevice = (props) => {
   const data = {
     datasets: [
       {
-        data: [63, 15, 22],
+        data: [45, 20, 15, 5, 5, 10],
         backgroundColor: [
           colors.indigo[500],
+          colors.blue[600],
+          colors.blue[600],
+          colors.orange[600],
           colors.red[600],
-          colors.orange[600]
+          colors.teal[600]
         ],
         borderWidth: 8,
         borderColor: colors.common.white,
         hoverBorderColor: colors.common.white
       }
     ],
-    labels: ['Desktop', 'Tablet', 'Mobile']
+    labels: ['Scheduled Jobs', 'Running jobs', 'Completed Jobs', 'Waiting for Input Jobs', 'Error Jobs', 'Cancel Jobs']
   };
 
   const options = {
@@ -57,28 +60,40 @@ const TrafficByDevice = (props) => {
 
   const devices = [
     {
-      title: 'Desktop',
-      value: 63,
-      icon: LaptopMacIcon,
+      title: 'Scheduled Jobs',
+      value: 45,
       color: colors.indigo[500]
     },
     {
-      title: 'Tablet',
+      title: 'Running jobs',
+      value: 20,
+      color: colors.blue[600]
+    },
+    {
+      title: 'Completed Jobs',
       value: 15,
-      icon: TabletIcon,
+      color: colors.green[600]
+    },
+    {
+      title: 'Waiting for Input Jobs',
+      value: 5,
+      color: colors.orange[600]
+    },
+    {
+      title: 'Error Jobs',
+      value: 5,
       color: colors.red[600]
     },
     {
-      title: 'Mobile',
-      value: 23,
-      icon: PhoneIcon,
-      color: colors.orange[600]
+      title: 'Cancel Jobs',
+      value: 10,
+      color: colors.teal[600]
     }
   ];
 
   return (
-    <Card {...props}>
-      <CardHeader title="Traffic by Device" />
+    <Card {...props} style={{ width: '100%' }}>
+      <CardHeader title="Jobs Chart" />
       <Divider />
       <CardContent>
         <Box
@@ -101,7 +116,6 @@ const TrafficByDevice = (props) => {
         >
           {devices.map(({
             color,
-            icon: Icon,
             title,
             value
           }) => (
@@ -112,7 +126,7 @@ const TrafficByDevice = (props) => {
                 textAlign: 'center'
               }}
             >
-              <Icon color="action" />
+              {/* <Icon color="action" /> */}
               <Typography
                 color="textPrimary"
                 variant="body1"

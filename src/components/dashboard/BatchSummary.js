@@ -5,7 +5,8 @@ import {
   ListItem,
   ListItemText,
   LinearProgress,
-  Button
+  Button,
+  Box
 } from '@material-ui/core';
 import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
@@ -51,18 +52,21 @@ const BatchSummary = (props) => {
   return (
     <Card {...props}>
       <List>
-        {jobs.map((job) => (
-          <ListItem key={job.id} alignItems="flex-start">
+        {jobs.map((job, i) => (
+          <ListItem key={job.id} alignItems="flex-start" style={{ height: '80px' }}>
             <ListItemText
               primary={job.category}
             />
-            <ListItemText
+            {/* <ListItemText
               primary={job.category}
-            />
-            <LinearProgress
-              value={75.5}
-              variant="determinate"
-            />
+            /> */}
+            <Box sx={{ width: '65%', marginRight: '3%' }}>
+              <LinearProgress
+                value={10.5 + (i * 5) + Math.random()}
+                variant="determinate"
+                style={{ marginTop: '20px' }}
+              />
+            </Box>
             <Button
               color="primary"
               size="small"

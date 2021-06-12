@@ -7,6 +7,7 @@ import {
   Grid,
   Typography
 } from '@material-ui/core';
+import Pagination from '@material-ui/lab/Pagination';
 import BatchSelection from 'src/components/dashboard/BatchSelection';
 import BatchSummary from 'src/components/dashboard/BatchSummary';
 import JobDetails from 'src/components/dashboard/JobDetails';
@@ -28,8 +29,9 @@ class Dashboard extends Component {
     };
   }
 
-  handleBatchSummary = () => {
+  handleBatchSummary = (summaryOptions) => {
     this.setState((prevState) => ({ showBatchSummary: !prevState.showBatchSummary }));
+    console.log(summaryOptions);
   }
 
   handleJobDetails = () => {
@@ -93,10 +95,19 @@ class Dashboard extends Component {
                       item
                       lg={12}
                       sm={6}
-                      xl={12}
+                      xl={6}
                       xs={12}
                     >
-                      <BatchSummary handlejobdetails={this.handleJobDetails} />
+                      <BatchSummary sx={{ height: '100%' }} handlejobdetails={this.handleJobDetails} />
+                    </Grid>
+                    <Grid
+                      item
+                      lg={4}
+                      md={6}
+                      xl={6}
+                      xs={12}
+                    >
+                      <TrafficByDevice sx={{ height: '100%' }} />
                     </Grid>
                   </Grid>
                 </div>
@@ -126,12 +137,13 @@ class Dashboard extends Component {
                       xs={12}
                     >
                       <JobDetails />
+                      <Pagination count={10} color="primary" />
                     </Grid>
                   </Grid>
                 </div>
               )
               : null }
-            <Grid
+            {/* <Grid
               container
               spacing={3}
             >
@@ -139,12 +151,12 @@ class Dashboard extends Component {
                 item
                 lg={4}
                 md={6}
-                xl={3}
+                xl={6}
                 xs={12}
               >
                 <TrafficByDevice sx={{ height: '100%' }} />
               </Grid>
-            </Grid>
+            </Grid> */}
 
             {/* <Grid
               container

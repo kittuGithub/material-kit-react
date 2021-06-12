@@ -77,7 +77,9 @@ const JobDetails = (props) => (
           <TableCell>
             Device
           </TableCell>
-          <TableCell />
+          <TableCell>
+            Action
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
