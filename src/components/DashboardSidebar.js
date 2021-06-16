@@ -21,7 +21,7 @@ import {
 //   UserPlus as UserPlusIcon,
 //   Users as UsersIcon
 // } from 'react-feather';
-import { BarChart as BarChartIcon } from 'react-feather';
+import { BarChart as BarChartIcon, ShoppingBag as ShoppingBagIcon, User as UserIcon } from 'react-feather';
 import NavItem from './NavItem';
 
 const user = {
@@ -34,22 +34,22 @@ const items = [
     href: '/app/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
-  }
+  },
   // {
   //   href: '/app/customers',
   //   icon: UsersIcon,
   //   title: 'Customers'
   // },
-  // {
-  //   href: '/app/products',
-  //   icon: ShoppingBagIcon,
-  //   title: 'Products'
-  // },
-  // {
-  //   href: '/app/account',
-  //   icon: UserIcon,
-  //   title: 'Account'
-  // },
+  {
+    href: '/app/products',
+    icon: ShoppingBagIcon,
+    title: 'Products'
+  },
+  {
+    href: '/app/account',
+    icon: UserIcon,
+    title: 'Account'
+  }
   // {
   //   href: '/app/settings',
   //   icon: SettingsIcon,

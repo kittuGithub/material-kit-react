@@ -18,13 +18,9 @@ import {
 import PropTypes from 'prop-types';
 
 // const useStyles = makeStyles((theme) => ({
-//   formControl: {
-//     margin: theme.spacing(1),
-//     minWidth: 120,
-//   },
-//   selectEmpty: {
-//     marginTop: theme.spacing(2),
-//   },
+//   isAM: {
+//     border: '1px solid red'
+//   }
 // }));
 
 function BatchSelection(props) {
@@ -33,9 +29,11 @@ function BatchSelection(props) {
     setUsecase(event.target.value);
   };
 
+  const [isAM, setIsAM] = React.useState(true);
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    setIsAM(!isAM);
   };
 
   const [batch, setBatch] = React.useState('');
@@ -78,7 +76,7 @@ function BatchSelection(props) {
                 id="demo-simple-select"
                 value={usecase}
                 onChange={handleUsecase}
-                style={{ width: '100%' }}
+                style={{ width: '100%', color: '#fffff' }}
               >
                 <MenuItem value="AutoZeroRating">AutoZeroRating</MenuItem>
                 <MenuItem value="ConfigUpdates">ConfigUpdates</MenuItem>
@@ -103,6 +101,7 @@ function BatchSelection(props) {
             </Grid>
             <Grid item>
               <KeyboardTimePicker
+                stlye={{ background: isAM ? 'red' : '' }}
                 margin="normal"
                 id="time-picker"
                 label="Time picker"
