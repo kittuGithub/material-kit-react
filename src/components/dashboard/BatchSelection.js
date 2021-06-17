@@ -16,6 +16,18 @@ import {
   KeyboardTimePicker
 } from '@material-ui/pickers';
 import PropTypes from 'prop-types';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+
+/* eslint-disable prefer-arrow-callback */
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+/* eslint-disable prefer-arrow-callback */
 
 // const useStyles = makeStyles((theme) => ({
 //   isAM: {
@@ -25,18 +37,23 @@ import PropTypes from 'prop-types';
 
 function BatchSelection(props) {
   const [usecase, setUsecase] = React.useState('');
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [batch, setBatch] = React.useState('');
+  const [userid, setUserid] = React.useState('');
+
   const handleUsecase = (event) => {
     setUsecase(event.target.value);
+    setSelectedDate(new Date());
+    setBatch('');
+    setUserid('');
   };
 
   const [isAM, setIsAM] = React.useState(true);
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setIsAM(!isAM);
   };
 
-  const [batch, setBatch] = React.useState('');
   const handleBatch = (event) => {
     setBatch(event.target.value);
   };
@@ -46,15 +63,29 @@ function BatchSelection(props) {
   //   setTimeselection(event.target.value);
   // };
 
-  const [userid, setUserid] = React.useState('');
   const handleUserid = (event) => {
     setUserid(event.target.value);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const onSummaryClick = () => {
-    props.handlebatchsummary({
-      usecase, batch, time: selectedDate, userid
-    });
+    if (usecase !== '' && batch !== '' && userid !== '') {
+      props.handlebatchsummary({
+        usecase, batch, time: selectedDate, userid
+      });
+    } else {
+      console.log();
+      handleClickOpen();
+    }
   };
 
   return (
@@ -63,6 +94,26 @@ function BatchSelection(props) {
         sx={{ height: '100%' }}
         {...props}
       >
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle id="alert-dialog-slide-title">Mandatory Values missing</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              UseCase, Batch and UserId are Mandatory. Please reverify before you submit.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Okay
+            </Button>
+          </DialogActions>
+        </Dialog>
         <CardContent>
           <Grid
             container

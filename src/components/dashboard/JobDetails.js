@@ -134,28 +134,9 @@ class JobDetails extends Component {
     });
     this.setState({ jobDetails });
   }
+
   /* eslint-disable no-param-reassign */
 
-  // const [isCheckAll, setIsCheckAll] = React.useState(false);
-  // const [isCheck, setIsCheck] = React.useState(false);
-
-  // const handleSelectAll = (event) => {
-  //   setIsCheck(event.target.checked);
-  //   setIsCheckAll(event.target.checked);
-  // };
-
-  // const handleDelete = (event) => {
-  //   console.log(event.target.value);
-  // };
-  // // style={{ marginLeft: '17px' }}
-
-  // const handleEdit = (event) => {
-  //   console.log(event.target.value);
-  // };
-
-  // const handleDeleteAll = (event) => {
-  //   console.log(event.target.value);
-  // };
   render() {
     const { jobDetails } = this.state;
     return (
