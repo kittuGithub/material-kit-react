@@ -11,6 +11,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import BatchSelection from 'src/components/dashboard/BatchSelection';
 import BatchSummary from 'src/components/dashboard/BatchSummary';
 import JobDetails from 'src/components/dashboard/JobDetails';
+import BatchSelectionDetails from 'src/components/dashboard/BatchSelectionDetails';
 // import Budget from 'src/components/dashboard//Budget';
 // import LatestOrders from 'src/components/dashboard//LatestOrders';
 // import LatestProducts from 'src/components/dashboard//LatestProducts';
@@ -25,7 +26,9 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       showBatchSummary: false,
-      showJobDetails: false
+      showBatchSummary1: false,
+      showJobDetails: false,
+      jobCategory: ''
     };
   }
 
@@ -34,12 +37,20 @@ class Dashboard extends Component {
     console.log(summaryOptions);
   }
 
-  handleJobDetails = () => {
-    this.setState((prevState) => ({ showJobDetails: !prevState.showJobDetails }));
+  handleBatchSummary1 = (summaryOptions) => {
+    this.setState((prevState) => ({ showBatchSummary1: !prevState.showBatchSummary1 }));
+    console.log(summaryOptions);
+  }
+
+  handleJobDetails = (jobCategory) => {
+    this.setState((prevState) => ({ showJobDetails: !prevState.showJobDetails, jobCategory }));
   }
 
   render() {
-    const { showBatchSummary, showJobDetails } = this.state;
+    const {
+      showBatchSummary, showBatchSummary1, showJobDetails, jobCategory
+    } = this.state;
+
     return (
       <>
         <Helmet>
@@ -77,6 +88,33 @@ class Dashboard extends Component {
             </Grid>
             <Divider />
             { showBatchSummary
+              ? (
+                <div>
+                  <Typography
+                    color="textPrimary"
+                    gutterBottom
+                    variant="h4"
+                    style={{ marginTop: '10px' }}
+                  >
+                    Batch Summary:
+                  </Typography>
+                  <Grid
+                    container
+                    spacing={3}
+                  >
+                    <Grid
+                      item
+                      lg={12}
+                      sm={6}
+                      xl={12}
+                      xs={12}
+                    >
+                      <BatchSelectionDetails sx={{ height: '100%' }} handleBatchSummary1={this.handleBatchSummary1} />
+                    </Grid>
+                  </Grid>
+                </div>
+              ) : null }
+            { showBatchSummary1
               ? (
                 <div>
                   <Typography
@@ -136,7 +174,7 @@ class Dashboard extends Component {
                       xl={12}
                       xs={12}
                     >
-                      <JobDetails />
+                      <JobDetails selectedJobCat={jobCategory} />
                       <Pagination count={10} color="primary" />
                     </Grid>
                   </Grid>

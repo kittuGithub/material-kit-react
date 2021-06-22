@@ -7,13 +7,14 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  TableSortLabel,
-  Tooltip,
+  // TableSortLabel,
+  // Tooltip,
   Checkbox
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import PropTypes from 'prop-types';
 
 // const jobDetails = [
 //   {
@@ -61,7 +62,6 @@ class JobDetails extends Component {
           isChecked: false,
           jobId: '11111',
           useCase: 'Day1',
-          workFlow: 'Map',
           Device: 'zauk54mcucr'
         },
         {
@@ -69,7 +69,6 @@ class JobDetails extends Component {
           isChecked: false,
           jobId: '2222',
           useCase: 'Day1',
-          workFlow: 'Map',
           Device: 'zauk53mcuc'
         },
         {
@@ -77,7 +76,6 @@ class JobDetails extends Component {
           isChecked: false,
           jobId: '3333',
           useCase: 'Day1',
-          workFlow: 'Map',
           Device: 'zauk54mcuci'
         },
         {
@@ -85,7 +83,6 @@ class JobDetails extends Component {
           isChecked: false,
           jobId: '4444',
           useCase: 'Day1',
-          workFlow: 'Map',
           Device: 'zauk53mcuc'
         }
       ]
@@ -139,6 +136,7 @@ class JobDetails extends Component {
 
   render() {
     const { jobDetails } = this.state;
+    const { selectedJobCat } = this.props;
     return (
       <Card>
         <Table>
@@ -155,21 +153,8 @@ class JobDetails extends Component {
               <TableCell>
                 Job ID
               </TableCell>
-              <TableCell sortDirection="desc">
-                <Tooltip
-                  enterDelay={300}
-                  title="Sort"
-                >
-                  <TableSortLabel
-                    active
-                    direction="desc"
-                  >
-                    UseCase
-                  </TableSortLabel>
-                </Tooltip>
-              </TableCell>
               <TableCell>
-                WorkFlow
+                UseCase
               </TableCell>
               <TableCell>
                 Device
@@ -201,14 +186,11 @@ class JobDetails extends Component {
                   {detail.useCase}
                 </TableCell>
                 <TableCell>
-                  {detail.workFlow}
-                </TableCell>
-                <TableCell>
                   {detail.Device}
                 </TableCell>
                 <TableCell>
                   <IconButton color="primary" aria-label="Delete" component="span">
-                    <EditIcon />
+                    { selectedJobCat === 'Scheduled Jobs' ? <EditIcon /> : null }
                   </IconButton>
                   <IconButton color="secondary" aria-label="Delete" component="span">
                     <DeleteIcon value={detail.jobId} onClick={() => this.handleCheckChildElementDelete(detail.jobId)} />
@@ -222,5 +204,9 @@ class JobDetails extends Component {
     );
   }
 }
+
+JobDetails.propTypes = {
+  selectedJobCat: PropTypes.string
+};
 
 export default JobDetails;

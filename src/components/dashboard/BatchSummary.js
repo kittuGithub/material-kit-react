@@ -1,12 +1,13 @@
 // import React from 'react';
 import {
   Card,
+  // Grid,
   List,
   ListItem,
   ListItemText,
-  LinearProgress,
+  // LinearProgress,
   Button,
-  Box
+  // Box
 } from '@material-ui/core';
 import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
@@ -15,51 +16,65 @@ const jobs = [
   {
     id: uuid(),
     category: 'Scheduled Jobs',
-    progress: 10
+    progress: '45%'
   },
   {
     id: uuid(),
     category: 'Running Jobs',
-    progress: 10
+    progress: '20%'
   },
   {
     id: uuid(),
     category: 'Completed Jobs',
-    progress: 10
+    progress: '15%'
   },
   {
     id: uuid(),
     category: 'Waiting for Input Jobs',
-    progress: 10
+    progress: '5%'
   },
   {
     id: uuid(),
     category: 'Error Jobs',
-    progress: 10
+    progress: '5%'
   },
   {
     id: uuid(),
     category: 'Cancel Jobs',
-    progress: 10
+    progress: '10%'
   }
 ];
 
 const BatchSummary = (props) => {
-  const onDetailClick = () => {
-    props.handlejobdetails();
+  const onDetailClick = (jobCategory) => {
+    props.handlejobdetails(jobCategory);
   };
 
   return (
     <Card {...props}>
       <List>
-        {jobs.map((job, i) => (
+        {jobs.map((job) => (
           <ListItem key={job.id} alignItems="flex-start" style={{ height: '80px' }}>
+            {/* <Box style={{ float: 'left' }} sx={{ width: '100%' }}> */}
+            <ListItemText
+              primary={job.category}
+              style={{ maxWidth: '50%' }}
+            />
+            <ListItemText>{job.progress}</ListItemText>
+            <Button
+              color="primary"
+              size="small"
+              variant="contained"
+              onClick={() => onDetailClick(job.category)}
+            >
+              Details
+            </Button>
+            {/* <ListItemText
+              primary={job.category}
+            />
             <ListItemText
               primary={job.category}
             />
-            {/* <ListItemText
-              primary={job.category}
-            /> */}
             <Box sx={{ width: '65%', marginRight: '3%' }}>
               <LinearProgress
                 value={10.5 + (i * 5) + Math.random()}
@@ -67,6 +82,7 @@ const BatchSummary = (props) => {
                 style={{ marginTop: '20px' }}
               />
             </Box>
+            <h3>{job.progress}</h3>
             <Button
               color="primary"
               size="small"
@@ -74,7 +90,8 @@ const BatchSummary = (props) => {
               onClick={onDetailClick}
             >
               Details
-            </Button>
+            </Button> */}
+            {/* </Box> */}
           </ListItem>
         ))}
       </List>

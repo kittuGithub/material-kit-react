@@ -7,7 +7,8 @@ import {
   Divider,
   Typography,
   colors,
-  useTheme
+  useTheme,
+  Grid
 } from '@material-ui/core';
 // import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 // import PhoneIcon from '@material-ui/icons/Phone';
@@ -96,53 +97,60 @@ const TrafficByDevice = (props) => {
       <CardHeader title="Jobs Chart" />
       <Divider />
       <CardContent>
-        <Box
-          sx={{
-            height: 300,
-            position: 'relative'
-          }}
-        >
-          <Doughnut
-            data={data}
-            options={options}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            pt: 2
-          }}
-        >
-          {devices.map(({
-            color,
-            title,
-            value
-          }) => (
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
             <Box
-              key={title}
               sx={{
-                p: 1,
-                textAlign: 'center'
+                height: 300,
+                position: 'relative',
+                marginTop: '25%'
               }}
             >
-              {/* <Icon color="action" /> */}
-              <Typography
-                color="textPrimary"
-                variant="body1"
-              >
-                {title}
-              </Typography>
-              <Typography
-                style={{ color }}
-                variant="h2"
-              >
-                {value}
-                %
-              </Typography>
+              <Doughnut
+                data={data}
+                options={options}
+              />
             </Box>
-          ))}
-        </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box
+              sx={{
+                justifyContent: 'center',
+                pt: 2
+              }}
+            >
+              {devices.map(({
+                color,
+                title,
+                value
+              }) => (
+                <Box
+                  key={title}
+                  sx={{
+                    p: 1,
+                    textAlign: 'center'
+                  }}
+                >
+                  {/* <Icon color="action" /> */}
+                  <Typography
+                    color="textPrimary"
+                    variant="body1"
+                  >
+                    {title}
+                  </Typography>
+                  <Typography
+                    style={{ color }}
+                    variant="h2"
+                  >
+                    {value}
+                    %
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </Grid>
+        </Grid>
+        {/* display: 'flex', */}
       </CardContent>
     </Card>
   );

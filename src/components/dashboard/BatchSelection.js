@@ -16,17 +16,17 @@ import {
   KeyboardTimePicker
 } from '@material-ui/pickers';
 import PropTypes from 'prop-types';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
+// import Dialog from '@material-ui/core/Dialog';
+// import DialogActions from '@material-ui/core/DialogActions';
+// import DialogContent from '@material-ui/core/DialogContent';
+// import DialogContentText from '@material-ui/core/DialogContentText';
+// import DialogTitle from '@material-ui/core/DialogTitle';
+// import Slide from '@material-ui/core/Slide';
 
 /* eslint-disable prefer-arrow-callback */
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// });
 /* eslint-disable prefer-arrow-callback */
 
 // const useStyles = makeStyles((theme) => ({
@@ -67,25 +67,28 @@ function BatchSelection(props) {
     setUserid(event.target.value);
   };
 
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   const onSummaryClick = () => {
-    if (usecase !== '' && batch !== '' && userid !== '') {
-      props.handlebatchsummary({
-        usecase, batch, time: selectedDate, userid
-      });
-    } else {
-      console.log();
-      handleClickOpen();
-    }
+    props.handlebatchsummary({
+      usecase, batch, time: selectedDate, userid
+    });
+    // if (usecase !== '' && batch !== '' && userid !== '') {
+    //   props.handlebatchsummary({
+    //     usecase, batch, time: selectedDate, userid
+    //   });
+    // } else {
+    //   console.log();
+    //   handleClickOpen();
+    // }
   };
 
   return (
@@ -94,7 +97,7 @@ function BatchSelection(props) {
         sx={{ height: '100%' }}
         {...props}
       >
-        <Dialog
+        {/* <Dialog
           open={open}
           TransitionComponent={Transition}
           keepMounted
@@ -113,7 +116,7 @@ function BatchSelection(props) {
               Okay
             </Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
         <CardContent>
           <Grid
             container
@@ -136,7 +139,7 @@ function BatchSelection(props) {
               </Select>
             </Grid>
             <Grid item>
-              <InputLabel id="demo-simple-select-label">Batch</InputLabel>
+              <InputLabel id="demo-simple-select-label">Batch Name</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -144,10 +147,8 @@ function BatchSelection(props) {
                 onChange={handleBatch}
                 style={{ width: '100%' }}
               >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value="Ganesh">Ganesh</MenuItem>
+                <MenuItem value="Andrew">Andrew</MenuItem>
               </Select>
             </Grid>
             <Grid item>
@@ -183,7 +184,7 @@ function BatchSelection(props) {
                 onClick={onSummaryClick}
                 style={{ marginTop: '20%' }}
               >
-                Summary
+                Selection
               </Button>
             </Grid>
           </Grid>
