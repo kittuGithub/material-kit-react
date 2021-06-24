@@ -5,9 +5,9 @@ import {
   List,
   ListItem,
   ListItemText,
-  // LinearProgress,
+  LinearProgress,
   Button,
-  // Box
+  Box
 } from '@material-ui/core';
 import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
@@ -16,32 +16,32 @@ const jobs = [
   {
     id: uuid(),
     category: 'Scheduled Jobs',
-    progress: '45%'
+    progress: '45'
   },
   {
     id: uuid(),
     category: 'Running Jobs',
-    progress: '20%'
+    progress: '20'
   },
   {
     id: uuid(),
     category: 'Completed Jobs',
-    progress: '15%'
+    progress: '15'
   },
   {
     id: uuid(),
     category: 'Waiting for Input Jobs',
-    progress: '5%'
+    progress: '5'
   },
   {
     id: uuid(),
     category: 'Error Jobs',
-    progress: '5%'
+    progress: '5'
   },
   {
     id: uuid(),
     category: 'Cancel Jobs',
-    progress: '10%'
+    progress: '10'
   }
 ];
 
@@ -60,7 +60,17 @@ const BatchSummary = (props) => {
               primary={job.category}
               style={{ maxWidth: '50%' }}
             />
-            <ListItemText>{job.progress}</ListItemText>
+            <Box sx={{ width: '65%', marginRight: '3%', textAlign: 'center' }}>
+              <ListItemText>
+                {job.progress}
+                %
+              </ListItemText>
+              <LinearProgress
+                value={job.progress}
+                variant="determinate"
+                style={{ marginTop: '0px' }}
+              />
+            </Box>
             <Button
               color="primary"
               size="small"
