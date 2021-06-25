@@ -16,36 +16,44 @@ const jobs = [
   {
     id: uuid(),
     category: 'Scheduled Jobs',
+    jobCount: '45',
     progress: '45'
   },
   {
     id: uuid(),
     category: 'Running Jobs',
+    jobCount: '20',
     progress: '20'
   },
   {
     id: uuid(),
     category: 'Completed Jobs',
+    jobCount: '15',
     progress: '15'
   },
   {
     id: uuid(),
     category: 'Waiting for Input Jobs',
+    jobCount: '5',
     progress: '5'
   },
   {
     id: uuid(),
     category: 'Error Jobs',
+    jobCount: '5',
     progress: '5'
   },
   {
     id: uuid(),
     category: 'Cancel Jobs',
+    jobCount: '10',
     progress: '10'
   }
 ];
 
 const BatchSummary = (props) => {
+  const openPare = '(';
+  const closePare = ')';
   const onDetailClick = (jobCategory) => {
     props.handlejobdetails(jobCategory);
   };
@@ -57,10 +65,18 @@ const BatchSummary = (props) => {
           <ListItem key={job.id} alignItems="flex-start" style={{ height: '80px' }}>
             {/* <Box style={{ float: 'left' }} sx={{ width: '100%' }}> */}
             <ListItemText
-              primary={job.category}
-              style={{ maxWidth: '50%' }}
+              primary={job.category + openPare + job.jobCount + closePare}
+              style={{ maxWidth: '100%' }}
             />
-            <Box sx={{ width: '65%', marginRight: '3%', textAlign: 'center' }}>
+            <Box sx={
+              {
+                width: '65%',
+                marginRight: '3%',
+                textAlign: 'center',
+                marginTop: '-12px'
+              }
+            }
+            >
               <ListItemText>
                 {job.progress}
                 %

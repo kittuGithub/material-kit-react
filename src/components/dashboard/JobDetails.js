@@ -187,6 +187,7 @@ class JobDetails extends Component {
 
   handleCheckChildElementDelete = (jobId) => {
     const { jobDetails } = this.state;
+    let setIntermediate = false;
     jobDetails.forEach((job, index) => {
       if (job.jobId === jobId) {
         if (job.isChecked) {
@@ -194,6 +195,12 @@ class JobDetails extends Component {
         }
       }
     });
+    jobDetails.forEach((job) => {
+      if (job.isChecked) {
+        setIntermediate = true;
+      }
+    });
+    this.setState({ isIndeterminate: setIntermediate });
     this.setState({ jobDetails });
   }
 
@@ -248,6 +255,7 @@ class JobDetails extends Component {
   render() {
     const { jobDetails, isIndeterminate } = this.state;
     const { selectedJobCat } = this.props;
+    console.log('selectedJobCat:: ', selectedJobCat);
     return (
       <Card>
         {/* <div style={{ height: 300, width: '100%' }}>
