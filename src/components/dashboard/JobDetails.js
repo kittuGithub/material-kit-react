@@ -19,48 +19,15 @@ import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PropTypes from 'prop-types';
-// import { DataGrid } from '@material-ui/data-grid';
-
-// const jobDetails = [
-//   {
-//     id: uuid(),
-//     check: true,
-//     jobId: '11111',
-//     useCase: 'Day1',
-//     workFlow: 'Map',
-//     Device: 'zauk54mcucr'
-//   },
-//   {
-//     id: uuid(),
-//     check: true,
-//     jobId: '2222',
-//     useCase: 'Day1',
-//     workFlow: 'Map',
-//     Device: 'zauk53mcuc'
-//   },
-//   {
-//     id: uuid(),
-//     check: true,
-//     jobId: '3333',
-//     useCase: 'Day1',
-//     workFlow: 'Map',
-//     Device: 'zauk54mcuci'
-//   },
-//   {
-//     id: uuid(),
-//     check: true,
-//     jobId: '4444',
-//     useCase: 'Day1',
-//     workFlow: 'Map',
-//     Device: 'zauk53mcuc'
-//   }
-// ];
+import TablePagination from '@material-ui/core/TablePagination';
 
 class JobDetails extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      page: 0,
+      rowsPerPage: 10,
       jobDetails: [
         {
           id: uuid(),
@@ -100,51 +67,6 @@ class JobDetails extends Component {
     };
   }
 
-  // ,
-  //     columns: [
-  //       { field: 'isChecked', headerName: 'check/UnCheck all', width: 180, editable: false },
-  //       { field: 'JobId', headerName: 'JobId', type: 'string', editable: true },
-  //       { field: 'UseCase', headerName: 'UseCase', type: 'String', width: 180, editable: true },
-  //       { field: 'lastLogin', headerName: 'Last Login', type: 'dateTime', width: 220, editable: true },
-  //     ],
-  //     rows: [
-  //       {
-  //         id: 1,
-  //         name: randomTraderName(),
-  //         age: 25,
-  //         dateCreated: randomCreatedDate(),
-  //         lastLogin: randomUpdatedDate(),
-  //       },
-  //       {
-  //         id: 2,
-  //         name: randomTraderName(),
-  //         age: 36,
-  //         dateCreated: randomCreatedDate(),
-  //         lastLogin: randomUpdatedDate(),
-  //       },
-  //       {
-  //         id: 3,
-  //         name: randomTraderName(),
-  //         age: 19,
-  //         dateCreated: randomCreatedDate(),
-  //         lastLogin: randomUpdatedDate(),
-  //       },
-  //       {
-  //         id: 4,
-  //         name: randomTraderName(),
-  //         age: 28,
-  //         dateCreated: randomCreatedDate(),
-  //         lastLogin: randomUpdatedDate(),
-  //       },
-  //       {
-  //         id: 5,
-  //         name: randomTraderName(),
-  //         age: 23,
-  //         dateCreated: randomCreatedDate(),
-  //         lastLogin: randomUpdatedDate(),
-  //       },
-  //     ]
-
   /* eslint-disable no-param-reassign */
   handleAllChecked = (event) => {
     const { jobDetails } = this.state;
@@ -152,6 +74,15 @@ class JobDetails extends Component {
     jobDetails.forEach((job) => { job.isChecked = value; });
     this.setState({ jobDetails });
   }
+
+  handleChangePage = (event, newPage) => {
+    this.setState({ page: newPage });
+  };
+
+  handleChangeRowsPerPage = (event) => {
+    this.setState({ rowsPerPage: parseInt(event.target.value, 10) });
+    this.setState({ page: 0 });
+  };
 
   handleCheckChieldElement = (event) => {
     const { jobDetails } = this.state;
@@ -253,7 +184,12 @@ class JobDetails extends Component {
   /* eslint-disable no-param-reassign */
 
   render() {
-    const { jobDetails, isIndeterminate } = this.state;
+    const {
+      jobDetails,
+      isIndeterminate,
+      page,
+      rowsPerPage
+    } = this.state;
     const { selectedJobCat } = this.props;
     console.log('selectedJobCat:: ', selectedJobCat);
     return (
@@ -359,6 +295,14 @@ class JobDetails extends Component {
             ))}
           </TableBody>
         </Table>
+        <TablePagination
+          component="div"
+          count={100}
+          page={page}
+          onPageChange={this.handleChangePage}
+          rowsPerPage={rowsPerPage}
+          onChangeRowsPerPage={this.handleChangeRowsPerPage}
+        />
       </Card>
     );
   }

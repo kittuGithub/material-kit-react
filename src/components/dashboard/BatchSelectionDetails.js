@@ -98,7 +98,7 @@ class BatchSelectionDetails extends Component {
                       color="primary"
                       onClick={this.onSelection}
                     >
-                      Select
+                      Statistics
                     </Button>
                   </TableCell>
                 </TableRow>

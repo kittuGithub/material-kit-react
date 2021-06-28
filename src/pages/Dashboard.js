@@ -7,7 +7,6 @@ import {
   Grid,
   Typography
 } from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
 import BatchSelection from 'src/components/dashboard/BatchSelection';
 import BatchSummary from 'src/components/dashboard/BatchSummary';
 import JobDetails from 'src/components/dashboard/JobDetails';
@@ -175,7 +174,6 @@ class Dashboard extends Component {
                       xs={12}
                     >
                       <JobDetails selectedJobCat={jobCategory} />
-                      <Pagination count={10} color="primary" />
                     </Grid>
                   </Grid>
                 </div>
