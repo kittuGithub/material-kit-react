@@ -37,6 +37,7 @@ import PropTypes from 'prop-types';
 
 function BatchSelection(props) {
   const [usecase, setUsecase] = React.useState('');
+  const [option, setOption] = React.useState('');
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   const [batch, setBatch] = React.useState('');
   const [userid, setUserid] = React.useState('');
@@ -44,6 +45,7 @@ function BatchSelection(props) {
   const handleUsecase = (event) => {
     setUsecase(event.target.value);
     setSelectedDate(new Date());
+    setOption('');
     setBatch('');
     setUserid('');
   };
@@ -52,6 +54,10 @@ function BatchSelection(props) {
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setIsAM(!isAM);
+  };
+
+  const handleOption = (event) => {
+    setOption(event.target.value);
   };
 
   const handleBatch = (event) => {
@@ -97,26 +103,6 @@ function BatchSelection(props) {
         sx={{ height: '100%' }}
         {...props}
       >
-        {/* <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-slide-title"
-          aria-describedby="alert-dialog-slide-description"
-        >
-          <DialogTitle id="alert-dialog-slide-title">Mandatory Values missing</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-slide-description">
-              UseCase, Batch and UserId are Mandatory. Please reverify before you submit.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Okay
-            </Button>
-          </DialogActions>
-        </Dialog> */}
         <CardContent>
           <Grid
             container
@@ -136,6 +122,18 @@ function BatchSelection(props) {
                 <MenuItem value="ConfigUpdates">ConfigUpdates</MenuItem>
                 <MenuItem value="Day1">Day1</MenuItem>
                 <MenuItem value="UploadImage">UploadImage</MenuItem>
+              </Select>
+            </Grid>
+            <Grid item>
+              <InputLabel id="demo-simple-select-label">Option</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={option}
+                onChange={handleOption}
+                style={{ width: '100%', color: '#fffff' }}
+              >
+                <MenuItem value="Execute">Execute</MenuItem>
               </Select>
             </Grid>
             <Grid item>

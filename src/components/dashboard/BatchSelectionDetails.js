@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Box,
   Card,
   Table,
   TableBody,
@@ -9,11 +10,14 @@ import {
   Button
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import TablePagination from '@material-ui/core/TablePagination';
 
 class BatchSelectionDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      page: 0,
+      rowsPerPage: 10,
       details: [
         {
           id: 1,
@@ -46,8 +50,22 @@ class BatchSelectionDetails extends Component {
     handleBatchSummary1();
   };
 
+  handleChangePage = (event, newPage) => {
+    this.setState({ page: newPage });
+  };
+
+  handleChangeRowsPerPage = (event) => {
+    this.setState({ rowsPerPage: parseInt(event.target.value, 10) });
+    this.setState({ page: 0 });
+  };
+
   render() {
-    const { batchName, details } = this.state;
+    const {
+      batchName,
+      details,
+      page,
+      rowsPerPage
+    } = this.state;
     return (
       <div>
         <Card>
@@ -105,6 +123,15 @@ class BatchSelectionDetails extends Component {
               ))}
             </TableBody>
           </Table>
+          <Box sx={{ textAlign: 'center' }}>
+            <TablePagination
+              count={100}
+              page={page}
+              onPageChange={this.handleChangePage}
+              rowsPerPage={rowsPerPage}
+              onChangeRowsPerPage={this.handleChangeRowsPerPage}
+            />
+          </Box>
         </Card>
       </div>
     );

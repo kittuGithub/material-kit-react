@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import {
   Box,
+  Button,
   Container,
   Divider,
   Grid,
@@ -68,7 +69,7 @@ class Dashboard extends Component {
               gutterBottom
               variant="h4"
             >
-              Batch Selection:
+              Batch Selection :
             </Typography>
             <Grid
               container
@@ -89,14 +90,28 @@ class Dashboard extends Component {
             { showBatchSummary
               ? (
                 <div>
-                  <Typography
-                    color="textPrimary"
-                    gutterBottom
-                    variant="h4"
-                    style={{ marginTop: '10px' }}
+                  <Box sx={{
+                    width: '100%',
+                    marginTop: '10px',
+                    textAlign: 'center'
+                  }}
                   >
-                    Batch Summary:
-                  </Typography>
+                    <Typography
+                      color="textPrimary"
+                      gutterBottom
+                      variant="h4"
+                      style={{ marginTop: '20px', float: 'left' }}
+                    >
+                      Batch Filter Selection :
+                    </Typography>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      style={{ float: 'right', marginTop: '10px', marginRight: '10px' }}
+                    >
+                      Summary
+                    </Button>
+                  </Box>
                   <Grid
                     container
                     spacing={3}
@@ -120,9 +135,9 @@ class Dashboard extends Component {
                     color="textPrimary"
                     gutterBottom
                     variant="h4"
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: '20px' }}
                   >
-                    Batch Summary:
+                    Batch Statistics :
                   </Typography>
                   <Grid
                     container
@@ -158,9 +173,9 @@ class Dashboard extends Component {
                     color="textPrimary"
                     gutterBottom
                     variant="h4"
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: '20px' }}
                   >
-                    Job Details:
+                    Job Details Queue :
                   </Typography>
                   <Grid
                     container

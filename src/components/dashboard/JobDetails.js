@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { v4 as uuid } from 'uuid';
 import {
+  Box,
   Card,
   Table,
   TableBody,
@@ -295,14 +296,17 @@ class JobDetails extends Component {
             ))}
           </TableBody>
         </Table>
-        <TablePagination
-          component="div"
-          count={100}
-          page={page}
-          onPageChange={this.handleChangePage}
-          rowsPerPage={rowsPerPage}
-          onChangeRowsPerPage={this.handleChangeRowsPerPage}
-        />
+        <Box sx={{ textAlign: 'center' }}>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={100}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={() => this.handleChangePage}
+            onChangeRowsPerPage={() => this.handleChangeRowsPerPage}
+          />
+        </Box>
       </Card>
     );
   }
