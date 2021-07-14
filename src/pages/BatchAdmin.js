@@ -6,10 +6,13 @@ import {
   Card,
   Container,
   CardContent,
+  FormGroup,
+  FormControlLabel,
   Grid,
   InputLabel,
   MenuItem,
   Select,
+  Switch,
   TextField,
   Typography
 } from '@material-ui/core';
@@ -179,6 +182,30 @@ export default function BatchAdmin() {
         { showSelectionContent
           ? (
             <div>
+              <Typography
+                color="textPrimary"
+                gutterBottom
+                variant="h4"
+                style={{ marginTop: '20px' }}
+              >
+                Start/Stop Queue :
+              </Typography>
+              <Card sx={{ marginTop: '20px', width: '20%' }}>
+                <FormGroup style={{ marginLeft: '20px' }}>
+                  <FormControlLabel
+                    control={<Switch checked onChange="" name="checkedA" color="primary" />}
+                    label="Day1"
+                  />
+                  <FormControlLabel
+                    control={<Switch checked={false} onChange="" name="checkedA" color="primary" />}
+                    label="Image Uploads"
+                  />
+                  <FormControlLabel
+                    control={<Switch checked="true" onChange="" name="checkedA" color="primary" />}
+                    label="Config Updates"
+                  />
+                </FormGroup>
+              </Card>
               <Card sx={{ marginTop: '20px', width: '20%' }}>
                 <Box style={{ margin: '10px' }}>
                   <TextField id="outlined-basic" label="Rate" variant="filled" style={{ marginLeft: '20px', marginTop: '20px' }} value="6" />
