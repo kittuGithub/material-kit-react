@@ -24,6 +24,10 @@ export default function BatchAdmin() {
   const [jobStatus, setJobStatus] = React.useState('');
   const [showSelectionContent, setShowSelectionContent] = React.useState(false);
 
+  const [toggleDay1, setToggleDay1] = React.useState(true);
+  const [toggleImageUpload, setToggleImageUpload] = React.useState(true);
+  const [toggleConfigUpdate, setToggleConfigUpdate] = React.useState(true);
+
   const handleQueue = (event) => {
     setQueue(event.target.value);
   };
@@ -43,6 +47,19 @@ export default function BatchAdmin() {
   const onSelectionClick = () => {
     setShowSelectionContent(!showSelectionContent);
   };
+
+  const onToggleDay1 = (event) => {
+    setToggleDay1(event.target.checked);
+  };
+
+  const onToggleImageUpload = (event) => {
+    setToggleImageUpload(event.target.checked);
+  };
+
+  const onToggleConfigUpdate = (event) => {
+    setToggleConfigUpdate(event.target.checked);
+  };
+
   return (
     <Box sx={{
       backgroundColor: 'background.default',
@@ -193,19 +210,27 @@ export default function BatchAdmin() {
               <Card sx={{ marginTop: '20px', width: '20%' }}>
                 <FormGroup style={{ marginLeft: '20px' }}>
                   <FormControlLabel
-                    control={<Switch checked onChange="" name="checkedA" color="primary" />}
+                    control={<Switch checked={toggleDay1} onChange={onToggleDay1} name="checkedA" color="primary" />}
                     label="Day1"
                   />
                   <FormControlLabel
-                    control={<Switch checked={false} onChange="" name="checkedA" color="primary" />}
+                    control={<Switch checked={toggleImageUpload} onChange={onToggleImageUpload} name="checkedA" color="primary" />}
                     label="Image Uploads"
                   />
                   <FormControlLabel
-                    control={<Switch checked="true" onChange="" name="checkedA" color="primary" />}
+                    control={<Switch checked={toggleConfigUpdate} onChange={onToggleConfigUpdate} name="checkedA" color="primary" />}
                     label="Config Updates"
                   />
                 </FormGroup>
               </Card>
+              <Typography
+                color="textPrimary"
+                gutterBottom
+                variant="h4"
+                style={{ marginTop: '20px' }}
+              >
+                Queue Options Queue :
+              </Typography>
               <Card sx={{ marginTop: '20px', width: '20%' }}>
                 <Box style={{ margin: '10px' }}>
                   <TextField id="outlined-basic" label="Rate" variant="filled" style={{ marginLeft: '20px', marginTop: '20px' }} value="6" />
